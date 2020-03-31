@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>insta485</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div id="header">
+      <span>
+        <a href="{{ url_for('show_index') }}">LOGO</a><span class="vertical-line"></span>INSTA485
+      </span>
+      <span>
+        <a href="{{ url_for('show_explore') }}">explore</a><span class="vertical-line"></span><a href="{{ url_for('show_user', username=logname) }}">{{logname}}</a>
+      </span>
+    </div>
+    <div id="reactEntry">
+      Loading ...
+    </div>
+    <!-- Load JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+  </body>
+</html>
