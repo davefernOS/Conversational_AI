@@ -2,3 +2,5 @@ insta485/
 .DS_Store
 env/
 node_modules/
+ngrok
+
