@@ -7,29 +7,34 @@ import pprint
 app = Flask(__name__)
 app.debug = True
 
-import time
-from selenium import webdriver
+import datetime
+import settings
 
-# def get_sunset_time(lng, date):
-#     url = 'https://api.sunrise-sunset.org/json?lat=00.0000000&lng={}.0000000&date={}}'.format(lat, lng, date)
-#     driver = webdriver.Chrome('chromedriver')
-#     driver.get(url)
-#     time.sleep(1)
+lat_def = -12.6168449
+lng_def = -38.0578038
+
+def get_sunset_sunrise_api_data(date, lat, lng):
+    URL = 'https://api.sunrise-sunset.org/json?lat={}&lng={}&date={}'.format(lat, lng, date)
+    req = requests.get(url = URL).json()
+    pprint.pprint(req)
+    return req
 
 def sunset_time_dispatch(req):
     date = req['queryResult']['outputContexts'][0]['parameters']['Date']
-    date = date.split("T")
-    date_num = date[0]
-    # lng = date[1].split("-")[-1].split(":")[0]
-    print(date)
-    # get_sunset_time(date)
-    return {'fulfillmentText': 'The Sunset will be at 9 PM.'}
+    date = date.split("T")[0]
+    location = settings.get_loc()
+    lat = location[0]
+    lng = location[1]
+    print(settings.get_loc(), "++++++++++++++++++++")
+    results = get_sunset_sunrise_api_data(date, lat, lng)['results']
+    return {'fulfillmentText': 'The Sunset will be at {}.'.format(results['sunset'])}
+    
 
 
 @app.route('/', methods=['GET', 'POST'])
 def do_stuff():
     req = request.json
-    pprint.pprint(req)
+    # pprint.pprint(req)
     if 'sunset_time' in req['queryResult']['intent']['displayName']:
         return sunset_time_dispatch(req)
 
@@ -37,5 +42,4 @@ def do_stuff():
 if __name__ == '__main__':
     # run back endpoint... default port 5001
     app.run(host='0.0.0.0', port=5001)
-
 

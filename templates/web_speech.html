@@ -11,66 +11,59 @@
     </h1>
 
     <main>
-      <button id="button">Start listening</button>
-      <div id="result"></div>
-      <p id="message" hidden aria-hidden="true">
-        Your browser doesn't support Speech Recognition. Sorry.
-      </p>
       <p>
         <p> <a href="{{ url_for('show_index') }}">INDEX</a> </p>
       </p>
+
+      <p>Click the button to get your coordinates.</p>
+
+      <button onclick="getLocation()">Give Your Location</button>
+
+      <p id="location"></p>
+
+
+
+      <form name="query_form" action="" method="post" enctype="multipart/form-data">
+        Query <input name="query" type="query"/>
+        Latitude <input name="lat" type="lat"/>
+        Longitude <input name="lng" type="lng"/>
+        <input type="submit" name="ask" value="submit"/>
+      </form>
+
+      <p id="response"> {{response}}</p>
+
     </main>
-     <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        const button = document.getElementById("button");
-        const result = document.getElementById("result");
-        const main = document.getElementsByTagName("main")[0];
-        var listening = false;
-        const SpeechRecognition =
-          window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (typeof SpeechRecognition !== "undefined") {
-          const recognition = new SpeechRecognition();
 
-          const stop = () => {
-            main.classList.remove("speaking");
-            recognition.stop();
-            button.textContent = "Start listening";
-          };
+      <script>
+        var loc = document.getElementById("location");
 
-          const start = () => {
-            main.classList.add("speaking");
-            recognition.start();
-            button.textContent = "Stop listening";
-          };
-
-          const onResult = event => {
-            result.innerHTML = "";
-            for (const res of event.results) {
-              const text = document.createTextNode(res[0].transcript);
-              const p = document.createElement("p");
-              if (res.isFinal) {
-                p.classList.add("final");
-              }
-              p.appendChild(text);
-              result.appendChild(p);
-            }
-          };
-          recognition.continuous = true;
-          recognition.interimResults = true;
-          recognition.addEventListener("result", onResult);
-          button.addEventListener("click", event => {
-            listening ? stop() : start();
-            listening = !listening;
-          });
-        } else {
-          button.remove();
-          const message = document.getElementById("message");
-          message.removeAttribute("hidden");
-          message.setAttribute("aria-hidden", "false");
+        function getLocation() {
+            navigator.geolocation.watchPosition(showPosition, showError);
         }
-      });
-    </script>
 
+        function showPosition(position) {
+          loc.innerHTML = "Latitude: " + position.coords.latitude +
+          "<br>Longitude: " + position.coords.longitude;
+
+        }
+
+        function showError(error) {
+            switch(error.code) {
+              case error.PERMISSION_DENIED:
+                loc.innerHTML = "User denied the request for Geolocation."
+                break;
+              case error.POSITION_UNAVAILABLE:
+                loc.innerHTML = "Location information is unavailable."
+                break;
+              case error.TIMEOUT:
+                loc.innerHTML = "The request to get user location timed out."
+                break;
+              case error.UNKNOWN_ERROR:
+                loc.innerHTML = "An unknown error occurred."
+                break;
+            }
+          }
+      </script>
 
   </body>
 

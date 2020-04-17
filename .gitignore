@@ -3,4 +3,5 @@ insta485/
 env/
 node_modules/
 ngrok
-
+user_loc.txt
+__pycache__/
