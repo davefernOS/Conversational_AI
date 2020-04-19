@@ -10,13 +10,22 @@ app.debug = True
 import datetime
 import settings
 
+
+
 lat_def = -12.6168449
 lng_def = -38.0578038
+
+def time_offset(lat, lng):
+    time_offset_url = 'https://maps.googleapis.com/maps/api/timezone/json?location={},{}&timestamp=0&key=AIzaSyDFU96TE1zMjZi5Cnu3QRPsOP9l2bcbNFY'.format(lat, lng)
+    req = requests.get(url=time_offset_url).json()
+    pprint.pprint(req)
+    # print("time_offset: {} --------------------------".format())
 
 def get_sunset_sunrise_api_data(date, lat, lng):
     URL = 'https://api.sunrise-sunset.org/json?lat={}&lng={}&date={}'.format(lat, lng, date)
     req = requests.get(url = URL).json()
-    pprint.pprint(req)
+    # pprint.pprint(req)
+    # time_offset(lat, lng)
     return req
 
 def sunset_time_dispatch(req):
