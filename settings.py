@@ -14,3 +14,11 @@ def get_loc():
 	location = f.readline()
 	location = location.split(':')
 	return location
+
+def get_db():
+    """Open a new database connection."""
+    if not hasattr(flask.g, 'sqlite_db'):
+        flask.g.sqlite_db = sqlite3.connect(
+            database.sqlite3)
+
+    return flask.g.sqlite_db
