@@ -40,8 +40,9 @@ db_cursor.execute('SELECT * FROM posts WHERE date=04202020')
 results = db_cursor.fetchall()
 ```
 
-*And in the end we return a json object such as a response a.k.a. fulfillmentText:*
+*And in the end we return a json object such as a response a.k.a. fulfillmentText:* 
 `return {'fulfillmentText': 'The Sunset will be at {}.'.format(results['sunset'])}`
+
 ---
 
 3. **Integrations**
@@ -54,7 +55,7 @@ results = db_cursor.fetchall()
 
 
 ## ngrok - Url tunnel to local host
-*[Link](https://ngrok.com/)*
+*[Ngrok Docs](https://ngrok.com/docs)*
 
 Download the executable. Then unzip and connect to your account './ngrok authtoken [Your Token On Account Page]' and then you can redirect to the desired port './ngrok http [PORT NUMBER]'
 
