@@ -4,7 +4,7 @@ Starter Code for University of Michigan Conversational AI Major Design Experienc
 ## How to Use
 
 - Backend: https://79889e96.ngrok.io/ Already connected with dialog flow
-- Front End should be run on local host
+- Front End should be run on local host `python front_end.py` and then acessed at 0.0.0.0:5000
 
 ## How To Run
 
@@ -127,23 +127,18 @@ touch database/data.sql
 In schema:
 ```
 CREATE TABLE tides(
-  date VARCHAR(10) NOT NULL,
+  the_date integer,
   high_1 VARCHAR(40),
   high_2 VARCHAR(40),
   low_1 VARCHAR(40),
-  low_2 VARCHAR(40),
+  low_2 VARCHAR(40)
 );
 ```
 
 In Data:
 ```
-INSERT INTO tides(date, high_1, high_2, low_1, low_2)
-VALUES ('2020-04-20', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
-VALUES ('2020-04-21', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
-VALUES ('2020-04-22', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
-VALUES ('2020-04-23', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
-VALUES ('2020-04-24', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
-VALUES ('2020-04-25', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
+INSERT INTO tides(the_date, high_1, high_2, low_1, low_2)
+VALUES (20200420, '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
 ```
 
 And then to manage:
