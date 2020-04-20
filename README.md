@@ -4,7 +4,7 @@ Starter Code for University of Michigan Conversational AI Major Design Experienc
 
 ## How To Run
 
-*Currently one one ngrok session can run so you must tunnel the front end once to extract your coordinates and then tunnel the back end and have the front end just through local host*
+*Currently only one ngrok session can run so you must tunnel the front end once to extract your coordinates and then tunnel the back end and have the front end just through local host*
 
 1. `./ngrok http 5000` and in another terminal `python front_end.py`
 2. Go to 0.0.0.0:5000 and get your coordinates 
@@ -122,8 +122,8 @@ touch database/data.sql
 
 In schema:
 ```
-CREATE TABLE users(
-  date INTEGER NOT NULL,
+CREATE TABLE tides(
+  date VARCHAR(10) NOT NULL,
   high_1 VARCHAR(40),
   high_2 VARCHAR(40),
   low_1 VARCHAR(40),
@@ -133,8 +133,13 @@ CREATE TABLE users(
 
 In Data:
 ```
-INSERT INTO users(username, high_1, high_2, low_1, low_2)
-VALUES ('04202020', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
+INSERT INTO tides(date, high_1, high_2, low_1, low_2)
+VALUES ('2020-04-20', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
+VALUES ('2020-04-21', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
+VALUES ('2020-04-22', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
+VALUES ('2020-04-23', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
+VALUES ('2020-04-24', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
+VALUES ('2020-04-25', '2:04, 2.00 M', '14:19, 2.16 M', '8:03, 0.36 M', '20:27, 0.30 M');
 ```
 
 And then to manage:
@@ -149,7 +154,7 @@ rm -rf database.sqlite3
 
 The database can now be accessed using the get_db function in settings.py 
 ```
-database = insta485.model.get_db()
+database = settings.get_db()
 
 db_cursor = database.cursor()
 

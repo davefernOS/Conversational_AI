@@ -11,8 +11,10 @@ app.debug = True
 
 import settings
 
+# Response sent to dialog flow to fulfill the specific query/intent 
 context = {"response": ""}
 
+#
 PARAMS_Q = {
                 "lang": "en",
                 "query": "",
@@ -20,21 +22,10 @@ PARAMS_Q = {
                 "sessionId": "12345",
                 "timezone": "America/New_York"
             }
-PARAMS_E = {
-                "entries": [{
-                    "latitude": 0,
-                    "longitude": 0
-                }],
-                "name": "location"
-            }
 
 HEAD_Q  =  { 'Authorization' :  'Bearer 078e4cb8210243e8b7327c987d60d3e2' }
 
-HEAD_D = { 'Authorization' :  'Bearer 078e4cb8210243e8b7327c987d60d3e2' } #Need to change this key
-
 URL_Q = 'https://api.dialogflow.com/v1/query?v=20150910'
-
-URL_E = 'https://api.dialogflow.com/v1/entities?v=20150910'
 
 @app.route('/', methods=['GET', 'POST'])
 def show_index():

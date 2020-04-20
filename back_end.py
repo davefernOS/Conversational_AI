@@ -10,10 +10,16 @@ app.debug = True
 import datetime
 import settings
 
-
-
+#default values
 lat_def = -12.6168449
 lng_def = -38.0578038
+
+def get_tide_times(date):
+    database = settings.get_db()
+    db_cursor = database.cursor()
+    db_cursor.execute('SELECT * FROM posts WHERE the_date={}'.format(date))
+    tide_times = db_cursor.fetchone()
+
 
 def time_offset(lat, lng):
     time_offset_url = 'https://maps.googleapis.com/maps/api/timezone/json?location={},{}&timestamp=0&key=AIzaSyDFU96TE1zMjZi5Cnu3QRPsOP9l2bcbNFY'.format(lat, lng)
@@ -24,7 +30,7 @@ def time_offset(lat, lng):
 def get_sunset_sunrise_api_data(date, lat, lng):
     URL = 'https://api.sunrise-sunset.org/json?lat={}&lng={}&date={}'.format(lat, lng, date)
     req = requests.get(url = URL).json()
-    # pprint.pprint(req)
+    # pprint.pprint(req) 
     # time_offset(lat, lng)
     return req
 
@@ -41,11 +47,13 @@ def sunset_time_dispatch(req):
 
 
 @app.route('/', methods=['GET', 'POST'])
-def do_stuff():
+def backend_dispatch():
     req = request.json
-    # pprint.pprint(req)
+    pprint.pprint(req) # Uncomment to see the POST request send by Dialogflow
     if 'sunset_time' in req['queryResult']['intent']['displayName']:
         return sunset_time_dispatch(req)
+    elif 'tide' in req['queryResult']['intent']['displayName']:
+        return get_tide_times(date)
 
 
 if __name__ == '__main__':
