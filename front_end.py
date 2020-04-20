@@ -49,7 +49,7 @@ def show_speech():
         print(settings.get_loc(), "  Time:   ", datetime.datetime.now())
         PARAMS_Q['query'] = query
         req = requests.get(url = URL_Q, params = PARAMS_Q, headers = HEAD_Q).json()
-        pprint.pprint(req)
+        # pprint.pprint(req) # Uncomment to see the POST request send by Dialogflow
         context["response"] = req["result"]["fulfillment"]["speech"]
     return flask.render_template("web_speech.html", **context)
 

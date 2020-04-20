@@ -14,18 +14,34 @@ import settings
 lat_def = -12.6168449
 lng_def = -38.0578038
 
-def get_tide_times(date):
+
+
+
+
+
+def get_tide_times(date, intent):
     database = settings.get_db()
     db_cursor = database.cursor()
-    db_cursor.execute('SELECT * FROM posts WHERE the_date={}'.format(date))
+    date = date.replace('-', '')
+    db_cursor.execute('SELECT * FROM tides WHERE the_date={}'.format(date))
     tide_times = db_cursor.fetchone()
-
+    if 'high' in intent:
+        tide_times = tide_times[:1]
+        which_tide = 'high tides'
+    if 'low' in intent:
+        tide_times = tide_times[2:]
+        which_tide = 'low tides'
+    return {'fulfillmentText': 'The {} will be at {} and {}.'.format(which_tide, tide_times[0], tide_times[1])}
 
 def time_offset(lat, lng):
     time_offset_url = 'https://maps.googleapis.com/maps/api/timezone/json?location={},{}&timestamp=0&key=AIzaSyDFU96TE1zMjZi5Cnu3QRPsOP9l2bcbNFY'.format(lat, lng)
     req = requests.get(url=time_offset_url).json()
     pprint.pprint(req)
     # print("time_offset: {} --------------------------".format())
+
+
+
+
 
 def get_sunset_sunrise_api_data(date, lat, lng):
     URL = 'https://api.sunrise-sunset.org/json?lat={}&lng={}&date={}'.format(lat, lng, date)
@@ -35,8 +51,8 @@ def get_sunset_sunrise_api_data(date, lat, lng):
     return req
 
 def sunset_time_dispatch(req):
-    date = req['queryResult']['outputContexts'][0]['parameters']['Date']
-    date = date.split("T")[0]
+    # date = req['queryResult']['outputContexts'][0]['parameters']['Date']
+    # date = date.split("T")[0]
     location = settings.get_loc()
     lat = location[0]
     lng = location[1]
@@ -46,14 +62,21 @@ def sunset_time_dispatch(req):
     
 
 
+
+
+
+
+
 @app.route('/', methods=['GET', 'POST'])
 def backend_dispatch():
     req = request.json
-    pprint.pprint(req) # Uncomment to see the POST request send by Dialogflow
+    date = req['queryResult']['outputContexts'][0]['parameters']['Date']
+    date = date.split("T")[0]
+    # pprint.pprint(req) # Uncomment to see the POST request send by Dialogflow
     if 'sunset_time' in req['queryResult']['intent']['displayName']:
         return sunset_time_dispatch(req)
     elif 'tide' in req['queryResult']['intent']['displayName']:
-        return get_tide_times(date)
+        return get_tide_times(date, req['queryResult']['intent']['displayName'])
 
 
 if __name__ == '__main__':

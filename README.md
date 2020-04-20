@@ -1,6 +1,10 @@
 # Conversational_AI - Dialogflow
 Starter Code for University of Michigan Conversational AI Major Design Experience using Google Dialogflow 
 
+## How to Use
+
+- Backend: https://79889e96.ngrok.io/ Already connected with dialog flow
+- Front End should be run on local host
 
 ## How To Run
 

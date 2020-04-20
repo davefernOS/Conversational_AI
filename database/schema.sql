@@ -1,5 +1,5 @@
 CREATE TABLE tides(
-  the_date VARCHAR(10) NOT NULL,
+  the_date integer,
   high_1 VARCHAR(40),
   high_2 VARCHAR(40),
   low_1 VARCHAR(40),

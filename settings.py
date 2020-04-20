@@ -1,3 +1,4 @@
+import sqlite3
 
 def init():
 	if os.path.exists("user_loc.txt"):
@@ -17,8 +18,7 @@ def get_loc():
 
 def get_db():
     """Open a new database connection."""
-    if not hasattr(flask.g, 'sqlite_db'):
-        flask.g.sqlite_db = sqlite3.connect(
-            database.sqlite3)
+    sqlite_db = sqlite3.connect(
+            'database.sqlite3')
 
-    return flask.g.sqlite_db
+    return sqlite_db
