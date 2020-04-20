@@ -111,7 +111,7 @@ URL = 'https://api.sunrise-sunset.org/json?lat={}&lng={}&date={}'.format(lat, ln
 response = requests.get(url = URL).json()
 
 # Which returns the following object
-	{
+{
       "results":
       {
         "sunrise":"7:27:02 AM",
@@ -126,7 +126,7 @@ response = requests.get(url = URL).json()
         "astronomical_twilight_end":"6:38:43 PM"
       },
        "status":"OK"
-	}
+}
   
 ```
 
