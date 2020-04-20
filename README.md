@@ -101,6 +101,15 @@ Connnections                  ttl     opn     rt1     rt5     p50     p90
 
 ## Requests - API calls for Fulfillment 
 
+Allows user to make GET/POST and other types of requests easily in back end, whcih is especially useful for your back end fulfillment.
+
+[Documentation](https://requests.readthedocs.io/en/master/)
+
+**Example Usage:**
+```
+URL = 'https://api.sunrise-sunset.org/json?lat={}&lng={}&date={}'.format(lat, lng, date)
+response = requests.get(url = URL).json()
+```
 
 ## Database - SQL Lite
 A SQL Database Engine to store data. 
