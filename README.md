@@ -2,6 +2,19 @@
 Starter Code for University of Michigan Conversational AI Major Design Experience using Google Dialogflow 
 
 
+## How To Run
+
+*Currently one one ngrok session can run so you must tunnel the front end once to extract your coordinates and then tunnel the back end and have the front end just through local host*
+
+1. `./ngrok http 5000` and in another terminal `python front_end.py`
+2. Go to 0.0.0.0:5000 and get your coordinates 
+3. Close ngrok session and run `./ngrok http 5001`and `python back_end.py`
+4. Update the redirected https tunnel in dialog flow 
+5. Query on front end
+
+
+- Alternatively you can just run demo with no coordinates and it will default to 0,0 
+
 
 
 ## Dialog Flow - Conversational Agent Framework
