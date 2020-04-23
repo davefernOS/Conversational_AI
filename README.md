@@ -98,6 +98,7 @@ Connnections                  ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```
 
+## Screen - Unix Utility
 
 ## Requests - API calls for Fulfillment 
 
@@ -110,7 +111,7 @@ Allows user to make GET/POST and other types of requests easily in back end, whc
 URL = 'https://api.sunrise-sunset.org/json?lat={}&lng={}&date={}'.format(lat, lng, date)
 response = requests.get(url = URL).json()
 
-# Which returns the following object
+# Which returns the following object -> response
 {
       "results":
       {

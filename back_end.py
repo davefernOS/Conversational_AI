@@ -26,11 +26,12 @@ def get_tide_times(date, intent):
     db_cursor.execute('SELECT * FROM tides WHERE the_date={}'.format(date))
     tide_times = db_cursor.fetchone()
     if 'high' in intent:
-        tide_times = tide_times[:1]
+        tide_times = tide_times[1:3]
         which_tide = 'high tides'
     if 'low' in intent:
-        tide_times = tide_times[2:]
+        tide_times = tide_times[3:]
         which_tide = 'low tides'
+    print(intent, "tide times -------------- ", tide_times)
     return {'fulfillmentText': 'The {} will be at {} and {}.'.format(which_tide, tide_times[0], tide_times[1])}
 
 def time_offset(lat, lng):
@@ -50,7 +51,7 @@ def get_sunset_sunrise_api_data(date, lat, lng):
     # time_offset(lat, lng)
     return req
 
-def sunset_time_dispatch(req):
+def sunset_time_dispatch(date, req):
     # date = req['queryResult']['outputContexts'][0]['parameters']['Date']
     # date = date.split("T")[0]
     location = settings.get_loc()
@@ -70,11 +71,11 @@ def sunset_time_dispatch(req):
 @app.route('/', methods=['GET', 'POST'])
 def backend_dispatch():
     req = request.json
+    pprint.pprint(req) # Uncomment to see the POST request send by Dialogflow
     date = req['queryResult']['outputContexts'][0]['parameters']['Date']
     date = date.split("T")[0]
-    # pprint.pprint(req) # Uncomment to see the POST request send by Dialogflow
     if 'sunset_time' in req['queryResult']['intent']['displayName']:
-        return sunset_time_dispatch(req)
+        return sunset_time_dispatch(date, req)
     elif 'tide' in req['queryResult']['intent']['displayName']:
         return get_tide_times(date, req['queryResult']['intent']['displayName'])
 

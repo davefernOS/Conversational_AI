@@ -1,0 +1,72 @@
+{
+  "id": "bc08f78d-ab07-4a8f-9c0b-ef0095ed89c7",
+  "name": "sunset_time",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "08a3e71b-1d72-4260-b95e-d2e4ae851ab7",
+          "required": true,
+          "dataType": "@sys.date",
+          "name": "Date",
+          "value": "$Date",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "For When"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "3589f65f-8e35-4d9a-a809-d96339d078f6",
+          "required": false,
+          "dataType": "@sys.number",
+          "name": "Latitude",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "90ddc269-c645-4f9a-b43d-9a796585bba7",
+          "required": false,
+          "dataType": "@sys.number",
+          "name": "Longitude",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

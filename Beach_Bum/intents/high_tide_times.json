@@ -1,0 +1,50 @@
+{
+  "id": "19b80bb6-62f1-4c98-8973-ef4c60e48899",
+  "name": "high_tide_times",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "eadcc3c8-db1c-4a27-8c28-5b6eff1908a4",
+          "required": true,
+          "dataType": "@sys.date",
+          "name": "Date",
+          "value": "$Date",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "what day"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "ffbee7b8-3250-458c-a197-db685fe68f48",
+    "data": [
+      {
+        "text": "is tomorrow tide times early or late",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "2e6e43d5-a447-4463-881e-8a063383211a",
+    "data": [
+      {
+        "text": "when is the next high tide",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e51182f6-6920-4cc1-b20b-6cd7c0f757f5",
+    "data": [
+      {
+        "text": "time pf the high tide",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ab023c3b-9050-456c-97e7-d4332d421540",
+    "data": [
+      {
+        "text": "high tide time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "5331fabe-3114-478a-a537-f998aa2ceece",
+    "data": [
+      {
+        "text": "high tide times please",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "50ff3b23-89ff-4242-a3b5-4a20594e715c",
+    "data": [
+      {
+        "text": "when is the tide high",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "84c1fa7a-c957-4830-be54-be7a75442d26",
+    "data": [
+      {
+        "text": "when is the tide high ",
+        "userDefined": false
+      },
+      {
+        "text": "tomorrow",
+        "alias": "Date",
+        "meta": "@sys.date",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "62266104-ce91-45d6-94aa-6f0f9ac85050",
+    "data": [
+      {
+        "text": "when is the high tide ",
+        "userDefined": false
+      },
+      {
+        "text": "today",
+        "alias": "Date",
+        "meta": "@sys.date",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]
